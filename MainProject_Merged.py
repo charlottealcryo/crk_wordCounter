@@ -219,7 +219,7 @@ emptyMan2025 = []
 
 typeCheck = ["Ambush", "Bomber", "Charge", "Defense", "Healing", "Magic", "Ranged", "Support"]
 positionCheck = ["Front", "Middle", "Rear"]
-rarityCheck = ["Epic", "Super Epic", "Legendary", "Ancient", "Beast", "Awakened"]
+rarityCheck = ["Epic", "Super Epic", "Legendary", "Ancient", "Beast", "Awakened", "Special"]
 
 #Ask user what they want to do
 
@@ -419,6 +419,14 @@ elif myAnswer == "2":
 
     print(f"Total number of words: {no_2021 + no_2022 + no_2023 + no_2024 + no_2025}")
 
+#Merge all Cookies into one array to compare everything together
+merged_ranked_array = cookies2021_ranked_array + cookies2022_ranked_array + cookies2023_ranked_array + cookies2024_ranked_array + cookies2025_ranked_array
+#print(merged_ranked_array)
+
+#Sort merged array
+merged_ranked_array.sort(key=lambda x: x[1], reverse=True)
+#print(merged_ranked_array)
+
 ####Placeholder Inserter
 def placeholder_insert(target):
      target.insert(0, ["A", "B"]) #Place a fake extra list at the start, to let our loop skip index 0 to properly start at index 1
@@ -431,6 +439,7 @@ cookies2022_ranked_array = placeholder_insert(cookies2022_ranked_array)
 cookies2023_ranked_array = placeholder_insert(cookies2023_ranked_array)
 cookies2024_ranked_array = placeholder_insert(cookies2024_ranked_array)
 cookies2025_ranked_array = placeholder_insert(cookies2025_ranked_array)
+merged_ranked_array = placeholder_insert(merged_ranked_array)
 
 #Create empty arrays for the top 3 to be thrown in here for each year
 top3array_2021 = []
@@ -438,6 +447,7 @@ top3array_2022 = []
 top3array_2023 = []
 top3array_2024 = []
 top3array_2025 = []
+top3array_blank = []
 
 #Update the rarity length due to the fake list ((if you don't, the last cookie will be excluded))
 rarity2021 = len(cookies2021_ranked_array)
@@ -445,6 +455,7 @@ rarity2022 = len(cookies2022_ranked_array)
 rarity2023 = len(cookies2023_ranked_array)
 rarity2024 = len(cookies2024_ranked_array)
 rarity2025 = len(cookies2025_ranked_array)
+raritymerged = len(merged_ranked_array)
 
 #### Actually print the Cookie Names and their Word Count, without the list in the way ####
 def cleanFinalRanking(cookieNumber, cookieRankArray, top3array):
@@ -493,6 +504,11 @@ cleanFinalRanking(rarity2024, cookies2024_ranked_array, top3array_2024)
 #2025
 print("\n---- 2025 Cookies ----")
 cleanFinalRanking(rarity2025, cookies2025_ranked_array, top3array_2025)
+
+#Merged
+print("\n---- Merged ----")
+cleanFinalRanking(raritymerged, merged_ranked_array, top3array_blank)
+
 print("") #Create a new line, 2021 Cookies: Top 3 may not print
 
 #print(" ")
@@ -525,3 +541,6 @@ rankingPrinter(top3array_2024)
 
 print("\n---- 2025 Cookies: Top 3 ----")
 rankingPrinter(top3array_2025)
+
+print("\n---- Merged: Top 3 ----")
+rankingPrinter(top3array_blank)
