@@ -1,7 +1,4 @@
 #A comparison between all Cookies' word length per skill
-#CREAM PUFF IS HERE TWICE FOR THEIR TWO VERSIONS (PRE-BUFF AND POST-BUFF). Apologies for the fact if there's another Cookie that got similar treatment like them,
-#to essentially have 2 different versions without external buffs that I missed
-#Ditched the Cookie Legion thing because it hasn't been updated since 2022
 
 import re
 class Cookie:
